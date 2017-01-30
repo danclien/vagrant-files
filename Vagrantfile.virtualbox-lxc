@@ -17,6 +17,11 @@ Vagrant.configure("2") do |config|
   config.vm.provider "lxc" do |lxc, override|
     override.vm.box = "danclien/xenial64-lxc"
     override.vm.box_url = "https://storage.googleapis.com/static.danclien.com/vagrant/vagrant-lxc-xenial-amd64.box"
+
+    # Uncomment to allow Docker to run inside the container
+    # lxc.customize 'aa_profile','unconfined'
+    # lxc.customize 'cgroup.devices.allow','a'
+    # lxc.customize 'cap.drop',''
   end
 
   config.vm.provider "virtualbox" do |vb, override|
